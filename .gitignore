@@ -1,0 +1,37 @@
+# Operating systems
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Environment files
+.env
+.env.*
+*.env
+
+# Docker
+docker-compose.override.yml
+*.log
+logs/
+tmp/
+
+# Jenkins
+jenkins_home/
+jenkins/keys/
+jenkins/keys/*
+
+# SSH / keys
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+
+# Language specific
+node_modules/
+__pycache__/
+
+# Misc
+*.swp
+*.tmp

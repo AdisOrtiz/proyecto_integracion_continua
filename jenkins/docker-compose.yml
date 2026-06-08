@@ -1,0 +1,42 @@
+services:
+  jenkins:
+    image: jenkins/jenkins:2.567
+    container_name: jenkins_container
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ${JENKINS_HOME_PATH}:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+      - /usr/libexec/docker:/usr/libexec/docker
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+    networks:
+      - red-integracion
+
+  agent:
+    image: jenkins/ssh-agent:jdk11
+    container_name: jenkins_container_agent
+    privileged: true
+    user: root
+    expose:
+      - 22
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=${JENKINS_AGENT_SSH_PUBLIC_KEY}
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - red-integracion
+
+networks:
+  red-integracion:
+    name: red-integracion

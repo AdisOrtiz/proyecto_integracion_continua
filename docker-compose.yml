@@ -1,0 +1,28 @@
+services:
+  contenedor1:
+    image: ubuntu:latest
+    container_name: contenedor1
+    command: tail -f /dev/null
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - red-integracion
+
+  contenedor2:
+    image: ubuntu:latest
+    container_name: contenedor2
+    command: tail -f /dev/null
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    networks:
+      - red-integracion
+
+networks:
+  red-integracion:
+    external: true

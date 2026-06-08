@@ -1,0 +1,223 @@
+Started by user lamurcia
+Obtained Jenkinsfile from git https://github.com/AdisOrtiz/proyecto_integracion_continua
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/entrega2
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential 59256ffd-e1aa-4fbc-b668-804320406e67
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/entrega2/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/AdisOrtiz/proyecto_integracion_continua # timeout=10
+Fetching upstream changes from https://github.com/AdisOrtiz/proyecto_integracion_continua
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials entrega2
+ > git fetch --tags --force --progress -- https://github.com/AdisOrtiz/proyecto_integracion_continua +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/lamurcia^{commit} # timeout=10
+Checking out Revision 7f3e19c697655a5af049c8c26f4808c76a4122b7 (refs/remotes/origin/lamurcia)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7f3e19c697655a5af049c8c26f4808c76a4122b7 # timeout=10
+Commit message: "FIX:ping executable file not found in /home/kolo/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/kolo/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/kolo/.vscode-server/bin/6a44c352bd24569c417e530095901b649960f9f8/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Users/Queso_mania/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/Queso_mania/AppData/Local/Programs/Python/Python312/Scripts/:/mnt/c/Users/Queso_mania/AppData/Local/Programs/Python/Python312/:/mnt/c/Users/Queso_mania/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Queso_mania/AppData/Local/Programs/Microsoft VS Code/bin"
+ > git rev-list --no-walk 708f5ad90c7f7b96e2e9b91928fc85765a19d085 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Checkout)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential 59256ffd-e1aa-4fbc-b668-804320406e67
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/entrega2/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/AdisOrtiz/proyecto_integracion_continua # timeout=10
+Fetching upstream changes from https://github.com/AdisOrtiz/proyecto_integracion_continua
+ > git --version # timeout=10
+ > git --version # 'git version 2.47.3'
+using GIT_ASKPASS to set credentials entrega2
+ > git fetch --tags --force --progress -- https://github.com/AdisOrtiz/proyecto_integracion_continua +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/lamurcia^{commit} # timeout=10
+Checking out Revision 7f3e19c697655a5af049c8c26f4808c76a4122b7 (refs/remotes/origin/lamurcia)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 7f3e19c697655a5af049c8c26f4808c76a4122b7 # timeout=10
+Commit message: "FIX:ping executable file not found in /home/kolo/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand:/home/kolo/.vscode-server/data/User/globalStorage/github.copilot-chat/copilotCli:/home/kolo/.vscode-server/bin/6a44c352bd24569c417e530095901b649960f9f8/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/PowerShell/7/:/mnt/c/Users/Queso_mania/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/Queso_mania/AppData/Local/Programs/Python/Python312/Scripts/:/mnt/c/Users/Queso_mania/AppData/Local/Programs/Python/Python312/:/mnt/c/Users/Queso_mania/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Queso_mania/AppData/Local/Programs/Microsoft VS Code/bin"
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Deploy Ubuntu containers)
+[Pipeline] echo
+Desplegando contenedores Ubuntu desde docker-compose.yml de la raíz
+[Pipeline] sh
++ docker network inspect red-integracion
+[Pipeline] sh
++ docker compose -f docker-compose.yml up -d --build
+ Image entrega2-contenedor1 Building 
+ Image entrega2-contenedor2 Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.03kB done
+#1 DONE 0.0s
+
+#2 [contenedor2 internal] load build definition from Dockerfile.ubuntu-ping
+#2 transferring dockerfile: 225B 0.0s done
+#2 DONE 0.1s
+
+#3 [contenedor2 internal] load metadata for docker.io/library/ubuntu:latest
+#3 DONE 0.0s
+
+#4 [contenedor1 internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [contenedor2 1/2] FROM docker.io/library/ubuntu:latest@sha256:f3d28607ddd78734bb7f71f117f3c6706c666b8b76cbff7c9ff6e5718d46ff64
+#5 resolve docker.io/library/ubuntu:latest@sha256:f3d28607ddd78734bb7f71f117f3c6706c666b8b76cbff7c9ff6e5718d46ff64 0.0s done
+#5 DONE 0.1s
+
+#6 [contenedor1 2/2] RUN apt-get update     && apt-get install -y --no-install-recommends iputils-ping     && rm -rf /var/lib/apt/lists/*
+#6 0.943 Get:1 http://archive.ubuntu.com/ubuntu resolute InRelease [136 kB]
+#6 1.041 Get:2 http://security.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+#6 1.284 Get:3 http://archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+#6 1.518 Get:4 http://archive.ubuntu.com/ubuntu resolute-backports InRelease [136 kB]
+#6 1.544 Get:5 http://security.ubuntu.com/ubuntu resolute-security/restricted amd64 Packages [250 kB]
+#6 1.637 Get:6 http://archive.ubuntu.com/ubuntu resolute/universe amd64 Packages [20.1 MB]
+#6 1.802 Get:7 http://security.ubuntu.com/ubuntu resolute-security/universe amd64 Packages [122 kB]
+#6 1.892 Get:8 http://security.ubuntu.com/ubuntu resolute-security/main amd64 Packages [247 kB]
+#6 3.248 Get:9 http://archive.ubuntu.com/ubuntu resolute/multiverse amd64 Packages [352 kB]
+#6 3.251 Get:10 http://archive.ubuntu.com/ubuntu resolute/restricted amd64 Packages [189 kB]
+#6 3.253 Get:11 http://archive.ubuntu.com/ubuntu resolute/main amd64 Packages [1874 kB]
+#6 3.278 Get:12 http://archive.ubuntu.com/ubuntu resolute-updates/multiverse amd64 Packages [3584 B]
+#6 3.279 Get:13 http://archive.ubuntu.com/ubuntu resolute-updates/universe amd64 Packages [128 kB]
+#6 3.286 Get:14 http://archive.ubuntu.com/ubuntu resolute-updates/restricted amd64 Packages [250 kB]
+#6 3.298 Get:15 http://archive.ubuntu.com/ubuntu resolute-updates/main amd64 Packages [255 kB]
+#6 3.998 Fetched 24.3 MB in 3s (7358 kB/s)
+#6 3.998 Reading package lists...
+#6 4.919 Reading package lists...
+#6 5.793 Building dependency tree...
+#6 6.018 Reading state information...
+#6 6.105 Solving dependencies...
+#6 6.419 The following additional packages will be installed:
+#6 6.422   libcap2 libidn2-0 libunistring5
+#6 6.425 Recommended packages:
+#6 6.425   linux-sysctl-defaults
+#6 6.463 The following NEW packages will be installed:
+#6 6.464   iputils-ping libcap2 libidn2-0 libunistring5
+#6 6.639 0 upgraded, 4 newly installed, 0 to remove and 3 not upgraded.
+#6 6.639 Need to get 754 kB of archives.
+#6 6.639 After this operation, 2657 kB of additional disk space will be used.
+#6 6.639 Get:1 http://archive.ubuntu.com/ubuntu resolute/main amd64 libcap2 amd64 1:2.75-10ubuntu2 [29.3 kB]
+#6 6.716 Get:2 http://archive.ubuntu.com/ubuntu resolute/main amd64 libunistring5 amd64 1.3-2build1 [610 kB]
+#6 6.944 Get:3 http://archive.ubuntu.com/ubuntu resolute/main amd64 libidn2-0 amd64 2.3.8-4build1 [67.6 kB]
+#6 6.963 Get:4 http://archive.ubuntu.com/ubuntu resolute/main amd64 iputils-ping amd64 3:20250605-1ubuntu1 [47.1 kB]
+#6 7.188 debconf: unable to initialize frontend: Dialog
+#6 7.188 debconf: (TERM is not set, so the dialog frontend is not usable.)
+#6 7.188 debconf: falling back to frontend: Readline
+#6 7.189 debconf: unable to initialize frontend: Readline
+#6 7.189 debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 4.)
+#6 7.189 debconf: falling back to frontend: Teletype
+#6 7.205 debconf: unable to initialize frontend: Teletype
+#6 7.205 debconf: (This frontend requires a controlling tty.)
+#6 7.205 debconf: falling back to frontend: Noninteractive
+#6 8.183 Fetched 754 kB in 0s (1540 kB/s)
+#6 8.223 Selecting previously unselected package libcap2:amd64.
+#6 8.223 (Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 7724 files and directories currently installed.)
+#6 8.241 Preparing to unpack .../libcap2_1%3a2.75-10ubuntu2_amd64.deb ...
+#6 8.253 Unpacking libcap2:amd64 (1:2.75-10ubuntu2) ...
+#6 8.313 Selecting previously unselected package libunistring5:amd64.
+#6 8.315 Preparing to unpack .../libunistring5_1.3-2build1_amd64.deb ...
+#6 8.320 Unpacking libunistring5:amd64 (1.3-2build1) ...
+#6 8.394 Selecting previously unselected package libidn2-0:amd64.
+#6 8.395 Preparing to unpack .../libidn2-0_2.3.8-4build1_amd64.deb ...
+#6 8.402 Unpacking libidn2-0:amd64 (2.3.8-4build1) ...
+#6 8.449 Selecting previously unselected package iputils-ping.
+#6 8.450 Preparing to unpack .../iputils-ping_3%3a20250605-1ubuntu1_amd64.deb ...
+#6 8.456 Unpacking iputils-ping (3:20250605-1ubuntu1) ...
+#6 8.508 Setting up libcap2:amd64 (1:2.75-10ubuntu2) ...
+#6 8.526 Setting up libunistring5:amd64 (1.3-2build1) ...
+#6 8.544 Setting up libidn2-0:amd64 (2.3.8-4build1) ...
+#6 8.563 Setting up iputils-ping (3:20250605-1ubuntu1) ...
+#6 8.580 /var/lib/dpkg/info/iputils-ping.postinst: 8: setcap: not found
+#6 8.587 Processing triggers for libc-bin (2.43-2ubuntu2) ...
+#6 DONE 8.7s
+
+#7 [contenedor2] exporting to image
+#7 exporting layers
+#7 exporting layers 0.3s done
+#7 exporting manifest sha256:aa2b39b06708d2469a6d91790d3eff947c3bb076e0284d8d9759cf80748d10b9 0.0s done
+#7 exporting config sha256:ec6a9fde581990e046073ef3ddad2ceece1910f02cb021f7e160cc1596821b45 0.0s done
+#7 exporting attestation manifest sha256:42e696bc9139db4513ffbf66525697ce16e5a0e54be4f8f6623b72767be19a97 0.1s done
+#7 exporting manifest list sha256:67adf72947205843c76fe659d7c10aab84a81bbfcbbe027f6dca5857224d48a4
+#7 exporting manifest list sha256:67adf72947205843c76fe659d7c10aab84a81bbfcbbe027f6dca5857224d48a4 0.0s done
+#7 naming to docker.io/library/entrega2-contenedor2:latest 0.0s done
+#7 unpacking to docker.io/library/entrega2-contenedor2:latest 0.1s done
+#7 DONE 0.7s
+
+#8 [contenedor1] exporting to image
+#8 exporting layers 0.3s done
+#8 exporting manifest sha256:1588f34361aa4dc576cd991f1d37f3eb29f75ef35fedf7efe1a9b0d32e4e8e66 0.0s done
+#8 exporting config sha256:b6d0a2de7bce04d814f5dcaf2bd32beca2112b6a0599f39dcd0aaf9e25ee5494 0.1s done
+#8 exporting attestation manifest sha256:9970992312e7432d0546578f1ed8988ca023879eebfd7bb3ddedcf9cbede0a7d 0.1s done
+#8 exporting manifest list sha256:fd4c0ce7a65b2e94802ba89dd133c19867fe32661c6b4a6fef6d4555b65b7fdb 0.0s done
+#8 naming to docker.io/library/entrega2-contenedor1:latest done
+#8 unpacking to docker.io/library/entrega2-contenedor1:latest 0.1s done
+#8 DONE 0.7s
+
+#9 [contenedor1] resolving provenance for metadata file
+#9 DONE 0.0s
+
+#10 [contenedor2] resolving provenance for metadata file
+#10 DONE 0.0s
+ Image entrega2-contenedor1 Built 
+ Image entrega2-contenedor2 Built 
+ Container contenedor1 Recreate 
+ Container contenedor2 Recreate 
+ Container contenedor1 Recreated 
+ Container contenedor2 Recreated 
+ Container contenedor1 Starting 
+ Container contenedor2 Starting 
+ Container contenedor1 Started 
+ Container contenedor2 Started 
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Validate connectivity)
+[Pipeline] echo
+Validando la comunicación entre contenedor1 y contenedor2
+[Pipeline] sh
++ docker compose -f docker-compose.yml exec contenedor1 ping -c 4 contenedor2
+PING contenedor2 (172.18.0.5) 56(84) bytes of data.
+64 bytes from contenedor2.red-integracion (172.18.0.5): icmp_seq=1 ttl=64 time=2.67 ms
+64 bytes from contenedor2.red-integracion (172.18.0.5): icmp_seq=2 ttl=64 time=0.080 ms
+64 bytes from contenedor2.red-integracion (172.18.0.5): icmp_seq=3 ttl=64 time=0.093 ms
+64 bytes from contenedor2.red-integracion (172.18.0.5): icmp_seq=4 ttl=64 time=0.627 ms
+
+--- contenedor2 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3028ms
+rtt min/avg/max/mdev = 0.080/0.867/2.668/1.062 ms
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Show status)
+[Pipeline] sh
++ docker compose -f docker-compose.yml ps
+NAME          IMAGE                  COMMAND               SERVICE       CREATED         STATUS         PORTS
+contenedor1   entrega2-contenedor1   "tail -f /dev/null"   contenedor1   5 seconds ago   Up 4 seconds   
+contenedor2   entrega2-contenedor2   "tail -f /dev/null"   contenedor2   5 seconds ago   Up 4 seconds   
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Declarative: Post Actions)
+[Pipeline] echo
+Pipeline completado. Si quieres detener los contenedores, usa docker compose down.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS

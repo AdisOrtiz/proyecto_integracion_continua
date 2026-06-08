@@ -12,6 +12,7 @@ Implementar una solución de integración continua utilizando Docker y Jenkins, 
 proyecto_integracion_continua/
 ├── README.md
 ├── docker-compose.yml
+├── Dockerfile.ubuntu-ping
 ├── Jenkinsfile
 ├── jenkins/
 │   ├── docker-compose.yml
@@ -34,7 +35,7 @@ docker network inspect red-integracion >/dev/null 2>&1 || docker network create 
 ### 2. Levantar los contenedores Ubuntu
 
 ```bash
-docker compose up -d
+docker compose up -d --build
 ```
 
 ### 3. Validar conectividad

@@ -12,7 +12,7 @@ pipeline {
       steps {
         echo 'Desplegando contenedores Ubuntu desde docker-compose.yml de la raíz'
         sh "docker network inspect red-integracion >/dev/null 2>&1 || docker network create red-integracion"
-        sh 'docker compose -f docker-compose.yml up -d'
+        sh 'docker compose -f docker-compose.yml up -d --build'
       }
     }
 
